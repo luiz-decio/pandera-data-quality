@@ -1,5 +1,6 @@
 import pandas as pd
 import pandera as pa
+from datetime import datetime
 from contract import BaseFinanceMetrics
 
 def extract_data(path_dir: str) -> pd.DataFrame:
@@ -14,7 +15,12 @@ def extract_data(path_dir: str) -> pd.DataFrame:
     return df
 
 def transform_data(df: pd.DataFrame) -> pd.DataFrame:
-    pass
+    df_transformed = df.copy()
+    df_transformed["tax_value"] = df_transformed["tax_percent"] * df_transformed["operating_revenue"]
+    df_transformed["total_cost"] = df_transformed["tax_value"] + df_transformed["operating_costs"]
+    df_transformed["net_income"] = df_transformed["operating_revenue"] - df_transformed["total_cost"]
+    df_transformed["operating_margin"] = (df_transformed["net_income"] / df_transformed["operating_revenue"])
+    df_transformed["insert_date"] = datetime.now()
 
 def load_data(df: pd.DataFrame) -> None:
     pass

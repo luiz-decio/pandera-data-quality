@@ -6,7 +6,7 @@ import pandera as pa
 import pytest
 
 # Add the root directory of the project to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.contract import BaseFinanceMetrics
 
@@ -16,7 +16,7 @@ def correct_contract_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     BaseFinanceMetrics.validate(df_test)
@@ -27,7 +27,7 @@ def new_column_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200],
+        "operating_costs": [200,200,200],
         "dummy_column": [0,0,0]
     })
 
@@ -40,7 +40,7 @@ def missing_column_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200],
+        "operating_costs": [200,200,200],
         "dummy_column": [0,0,0]
     })
 
@@ -53,7 +53,7 @@ def missing_value_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
@@ -65,7 +65,7 @@ def invalid_sector_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
@@ -77,7 +77,7 @@ def negative_revenue_test():
         "operating_revenue": [-1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
@@ -89,7 +89,7 @@ def invalid_date_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["invalid date", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
@@ -101,7 +101,7 @@ def tax_percent_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [1.1, 0.1, 0.1],
-        "operatiing_costs": [200,200,200]
+        "operating_costs": [200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
@@ -113,7 +113,7 @@ def negative_costs_test():
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [0.1, 0.1, 0.1],
-        "operatiing_costs": [-200,200,200]
+        "operating_costs": [-200,200,200]
     })
 
     with pytest.raises(pa.errors.SchemaError):
