@@ -12,9 +12,9 @@ class BaseFinanceMetrics(pa.DataFrameModel):
         strict = True
         coerce = True
 
-    @pa.Check(
+    @pa.check(
         "company_sector",
-        name="Check the sector code",
-        error="Sector code is not valid.")
+        name = "Check the sector code",
+        error = "Sector code is not valid.")
     def sector_code_check(cls, code: Series[str]) -> Series[bool]:
         return code.str[:4].isin(["REP_", "MNT_", "VND_"])
