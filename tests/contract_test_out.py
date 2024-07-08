@@ -10,8 +10,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from src.contract import OutFinanceMetrics
 
-def correct_contract_test():
-    df_test = pd.dateFrame({
+def test_correct_contract():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
@@ -25,8 +25,8 @@ def correct_contract_test():
 
     OutFinanceMetrics.validate(df_test)
 
-def correct_contract_optional_column_test():
-    df_test = pd.dateFrame({
+def test_correct_contract_optional_column():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
@@ -41,8 +41,8 @@ def correct_contract_optional_column_test():
 
     OutFinanceMetrics.validate(df_test)
 
-def missiing_column_test():
-    df_test = pd.dateFrame({
+def test_missiing_column():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
@@ -57,8 +57,8 @@ def missiing_column_test():
     with pytest.raises(pa.errors.SchemaError):
         OutFinanceMetrics.validate(df_test)
 
-def new_column_test():
-    df_test = pd.dateFrame({
+def test_new_column():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
@@ -75,8 +75,8 @@ def new_column_test():
     with pytest.raises(pa.errors.SchemaError):
         OutFinanceMetrics.validate(df_test)
 
-def missing_value_test():
-    df_test = pd.dateFrame({
+def test_missing_value():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
@@ -92,8 +92,8 @@ def missing_value_test():
     with pytest.raises(pa.errors.SchemaError):
         OutFinanceMetrics.validate(df_test)
 
-def operating_margin_metric_test():
-    df_test = pd.dateFrame({
+def test_operating_margin_metric():
+    df_test = pd.DataFrame({
         "company_sector": ["VND_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
