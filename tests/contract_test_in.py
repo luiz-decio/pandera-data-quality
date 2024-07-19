@@ -97,7 +97,7 @@ def test_invalid_date():
 
 def test_tax_percent():
     df_test = pd.DataFrame({
-        "company_sector": ["test_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
+        "company_sector": ["testci_A1B2C3", "REP_X7Y8Z9", "MNT_4D5E6F"],
         "operating_revenue": [1000,1000,1000],
         "date": ["2023-01-01", "2023-01-01", "2023-01-01"],
         "tax_percent": [1.1, 0.1, 0.1],
