@@ -22,7 +22,7 @@ jobs:
         run: pip install -r requirements.txt 
       
       - name: Test data contract in
-        run: pytest tests/test_contrato_in.py -v 
+        run: pytest tests/contract_test_in.py -v 
               
       - name: Test data contract out
-        run: pytest tests/test_contrato_out.py -v
+        run: pytest tests/contract_test_out.py -v
